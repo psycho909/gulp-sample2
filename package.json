@@ -1,0 +1,44 @@
+{
+  "name": "gulp3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile - 複製.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "autoprefixer": "^9.6.1",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.7",
+    "browserify": "^16.5.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-tinypng-nokey": "^1.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-version-number": "^0.2.4",
+    "gulp.spritesmith": "^6.11.0",
+    "plumber": "^0.4.8",
+    "uglify": "^0.1.5",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "browserslist": [
+    "last 2 major version",
+    "last 7 versions",
+    ">= 1%",
+    "Chrome >= 45",
+    "Firefox >= 38",
+    "Edge >= 12",
+    "Explorer >= 8",
+    "iOS >= 9",
+    "Safari >= 9",
+    "Android >= 4.4",
+    "Opera >= 30"
+  ]
+}

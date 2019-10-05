@@ -1,0 +1,63 @@
+@import './mixins/_user';
+@import './mixins/_mixin';
+@import './mixins/_color';
+@import './mixins/_fix-menu';
+@import './mixins/_top';
+
+#app{
+	width: 100%;
+	overflow: hidden;
+	height: 600px;
+	background-color: rgb(117, 117, 117)
+}
+header{
+	@include set-width();
+	overflow: hidden;
+	.h1-seo{
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translate(-1000%);
+	}
+}
+#main{
+	width: 100%;
+}
+.item-wrap{
+	@include set-width();
+}
+
+footer{
+	padding: 1rem;
+	text-align: center;
+	background-color: rgb(224, 0, 0);
+	color:#fff;
+}
+
+@media screen and (max-width:1200px){
+
+}
+@media screen and (max-width:990px){
+	footer{
+		font-size: .9rem;
+		padding: .9rem;
+	}
+}
+@media screen and (max-width:768px){
+	footer{
+		font-size: .8rem;
+		padding: .8rem;
+	}
+}
+@media screen and (max-width:576px){
+	footer{
+		font-size: .7rem;
+		padding: .7rem;
+	}
+}
+@media screen and (max-width:414px){
+	footer{
+		font-size: .6rem;
+		padding: .6rem;
+	}
+}
