@@ -2,7 +2,7 @@
   "name": "gulp3",
   "version": "1.0.0",
   "description": "",
-  "main": "gulpfile - 複製.js",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,7 +26,8 @@
     "plumber": "^0.4.8",
     "uglify": "^0.1.5",
     "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
+    "vinyl-source-stream": "^2.0.0",
+    "colors": "^1.3.3"
   },
   "browserslist": [
     "last 2 major version",

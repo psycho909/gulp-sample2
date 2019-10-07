@@ -7,6 +7,7 @@ const browserSync=require('browser-sync').create();
 const spritesmith = require('gulp.spritesmith');
 const tinypng = require('gulp-tinypng-nokey');
 const version = require('gulp-version-number')
+var colors = require('colors');
 
 const browserify=require('browserify')
 const babelify=require('babelify')
@@ -22,6 +23,7 @@ const paths={
 	"js":"./src/js/**/*.js",
 	"json":"./src/data/json/**/*.json",
 	"images":"./src/images/**/*.*",
+	"sprite":"./src/sprite/**/*.*",
 	"html":"./src/html/**/*.html",
 	"dist":{
 		"sprite":"./dist/images/sprite/",
@@ -33,16 +35,18 @@ const paths={
 }
 
 function imageMin1(){
+	console.log(colors.red('imageMin1 : COMPILE'))
 	return gulp.src(paths.images)
 		.pipe(tinypng())
 		.pipe(gulp.dest('./dist/images/'))
 }
 
 function sprite(){
-	return gulp.src(paths.images)
+	console.log(colors.red('sprite : COMPILE'))
+	return gulp.src(paths.sprite)
 		.pipe(spritesmith({
 			imgName: 'sprite.png',
-			cssName: 'sprites.scss',
+			cssName: '_sprites.scss',
 			cssFormat:'scss'
 		}))
 		.pipe(gulp.dest(paths.dist.sprite));
@@ -50,6 +54,7 @@ function sprite(){
 
 // compile scss into css
 function style(){
+	console.log(colors.red('style'))
 	// 1.where is my scss file
 	return gulp.src(paths.scss)
 	// 2.pass that file through sass compiler
@@ -84,6 +89,7 @@ function babeljs(){
 }
 
 function htmlVersion(){
+	console.log(colors.red('htmlVersion'))
 	return gulp.src(paths.html)
 		.pipe(version({
 			'value':"%MDS%",
