@@ -21,6 +21,7 @@ const paths = {
         pug: './src/pug/**/*.pug',
         ejs: './src/ejs/**/*.ejs',
         js: './src/js/default.js',
+        alljs: './src/js/**/*.js',
         json: './src/data/json/**/*.json',
         images: './src/images/**/*.*',
         sprite: './src/sprite/**/*.*',
@@ -127,7 +128,7 @@ const watch= (done) => {
     gulp.watch(paths.entry.scss, gulp.parallel(style))
     gulp.watch(paths.entry.html, gulp.parallel(htmlVersion))
     // gulp.watch(paths.output.js).on('change',browserSync.reload)
-    gulp.watch(paths.entry.js, gulp.parallel(browserifyJs)).on('change', browserSync.reload)
+    gulp.watch(paths.entry.alljs, gulp.parallel(browserifyJs)).on('change', browserSync.reload)
     gulp.watch(paths.entry.images, gulp.parallel(imageMin1)).on('change', browserSync.reload)
 	done()
 }
