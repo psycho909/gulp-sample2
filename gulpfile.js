@@ -15,6 +15,8 @@ const buffer = require('vinyl-buffer')
 const source = require('vinyl-source-stream')
 const uglify = require('gulp-uglify')
 
+const babel = require('gulp-babel');
+
 const paths = {
     entry:{
         scss: './src/scss/**/*.scss',
@@ -101,6 +103,16 @@ const browserifyJs = () => {
 	.pipe(gulp.dest(paths.output.js))
 }
 
+const gulpBabel=()=>{
+    console.log(colors.red('gulpBabel'))
+    return gulp.src(paths.entry.alljs)
+        .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ["@babel/preset-env"],
+        }))
+        .pipe(gulp.dest(paths.output.js))
+}
+
 function htmlVersion() {
     console.log(colors.red('htmlVersion'))
     return gulp
@@ -133,10 +145,26 @@ const watch= (done) => {
 	done()
 }
 
+const watchBabel= (done) => {
+    browserSync.init({
+        server: {
+            baseDir: paths.output.base,
+        },
+    })
+    gulp.watch(paths.entry.scss, gulp.parallel(style))
+    gulp.watch(paths.entry.html, gulp.parallel(htmlVersion))
+    // gulp.watch(paths.output.js).on('change',browserSync.reload)
+    gulp.watch(paths.entry.alljs, gulp.parallel(gulpBabel)).on('change', browserSync.reload)
+    gulp.watch(paths.entry.images, gulp.parallel(imageMin1)).on('change', browserSync.reload)
+	done()
+}
+
 exports.style = style
 exports.watch = watch
+exports.watchBabel = watchBabel
 exports.browserifyJs = browserifyJs
 exports.sprite = sprite
 exports.imageMin1 = imageMin1
+exports.gulpBabel = gulpBabel
 
 exports.default=gulp.series(style,browserifyJs,watch)
